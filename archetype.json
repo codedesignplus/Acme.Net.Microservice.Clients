@@ -1,0 +1,10 @@
+{
+  "microservice": "Clients",
+  "description": "Custom Microservice",
+  "version": "1.0.0",
+  "organization": "Acme",
+  "aggregate": "Client",
+  "vault": "store-acme",
+  "contactName": "Jane Doe",
+  "contactEmail": "jane.doe@example.com"
+}

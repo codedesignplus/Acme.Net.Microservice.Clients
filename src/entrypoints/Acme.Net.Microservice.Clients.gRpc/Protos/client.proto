@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Acme.Net.Microservice.Clients.gRpc";
+
+package Client;
+
+service Client {
+  rpc GetClient (stream GetClientRequest) returns (stream ClientResponse);
+}
+
+message Address {
+  string country = 1;
+  string state = 2;
+  string city = 3;
+  string addressValue = 4;
+}
+
+message GetClientRequest {
+  string id = 1;
+}
+
+message ClientResponse {
+  string id = 1;
+  string name = 2;
+  string lastName = 3;
+  string email = 4;
+  Address address = 5;
+}
