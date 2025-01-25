@@ -12,7 +12,7 @@ public sealed partial class Address
     public string City { get; private set; }
     public string AddressValue { get; private set; }
 
-    private Address()
+    public Address()
     {
         this.Country = string.Empty;
         this.State = string.Empty;

@@ -1,8 +1,8 @@
 namespace Acme.Net.Microservice.Clients.Application.Subscription.Commands.InactivateClient;
 
-public class InactiveClientCommandHandler(IMediator mediator, ISubscriptionRepository repository, IUserContext user) : IRequestHandler<InactivateClientCommand>
+public class InactiveClientCommandHandler(IMediator mediator, ISubscriptionRepository repository, IUserContext user) : IRequestHandler<InactivatedClientCommand>
 {
-    public async Task Handle(InactivateClientCommand request, CancellationToken cancellationToken)
+    public async Task Handle(InactivatedClientCommand request, CancellationToken cancellationToken)
     {
         ApplicationGuard.IsNull(request, Errors.InvalidRequest);
 

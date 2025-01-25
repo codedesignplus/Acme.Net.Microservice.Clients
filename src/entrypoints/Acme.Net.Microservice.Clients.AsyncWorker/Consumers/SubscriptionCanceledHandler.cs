@@ -10,7 +10,7 @@ public class SubscriptionCanceledHandler(ILogger<SubscriptionCanceledHandler> lo
     {
         logger.LogInformation("SubscriptionCanceledDomainEvent Recived, {Json}", JsonSerializer.Serialize(data));
 
-        mediator.Send(new Application.Subscription.Commands.InactivateClient.InactivateClientCommand(data.AggregateId, data.IdClient, data.IdProduct, data.StartDate, data.EndDate, data.CreatedBy, data.Tenant), token);
+        mediator.Send(new Application.Subscription.Commands.InactivateClient.InactivatedClientCommand(data.AggregateId, data.IdClient, data.IdProduct, data.StartDate, data.EndDate, data.CreatedBy, data.Tenant), token);
 
         return Task.CompletedTask;
     }

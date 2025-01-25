@@ -2,7 +2,7 @@ using Acme.Net.Microservice.Clients.Domain.Enums;
 
 namespace Acme.Net.Microservice.Clients.AsyncWorker.DomainEvents;
 
-[EventKey<SubscriptionAggregate>(1, "SubscriptionCanceledDomainEvent", "ms-suscriptions")]
+[EventKey<SubscriptionAggregate>(1, "SubscriptionCanceledDomainEvent", "ms-subscriptions")]
 public class SubscriptionCanceledDomainEvent(
      Guid aggregateId,
      Guid idClient,
