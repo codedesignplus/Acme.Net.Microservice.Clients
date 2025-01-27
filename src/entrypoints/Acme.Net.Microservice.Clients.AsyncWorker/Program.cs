@@ -24,7 +24,7 @@ builder.Services.AddRabbitMQ<Program>(builder.Configuration);
 builder.Services.AddSecurity(builder.Configuration);
 builder.Services.AddCache(builder.Configuration);
 builder.Services.AddMapster();
-builder.Services.AddFluentValidation();
+builder.Services.AddFluentValidation(ServiceLifetime.Scoped);
 builder.Services.AddMediatR<Acme.Net.Microservice.Clients.Application.Startup>();
 
 var app = builder.Build();

@@ -98,12 +98,9 @@ public class ClientAggregate(Guid id) : AggregateRoot(id)
         ));
     }
 
-    public void Inactivate(Guid updatedBy)
+    public void Inactivate()
     {
-        DomainGuard.GuidIsEmpty(updatedBy, Errors.InvalidCreatedBy);
-
         this.IsActive = false;
-        this.UpdatedBy = updatedBy;
         this.UpdatedAt = SystemClock.Instance.GetCurrentInstant();
 
         this.AddEvent(ClientInactivatedDomainEvent.Create(Id, IsActive, UpdatedAt, UpdatedBy));

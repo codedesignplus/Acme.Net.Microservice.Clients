@@ -10,9 +10,9 @@ public class InactivateClientCommandHandler(IClientRepository repository, IUserC
 
         ApplicationGuard.IsNull(client, Errors.ClientNotFound);
 
-        client.Inactivate(user.IdUser);
+        client.Inactivate();
 
-        await repository.DeleteAsync<ClientAggregate>(client.Id, user.Tenant, cancellationToken);
+        await repository.UpdateAsync(client, cancellationToken);
 
         await pubSub.PublishAsync(client.GetAndClearEvents(), cancellationToken);
     }

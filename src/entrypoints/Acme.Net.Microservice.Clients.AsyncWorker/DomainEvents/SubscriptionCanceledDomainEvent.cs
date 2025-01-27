@@ -18,7 +18,7 @@ public class SubscriptionCanceledDomainEvent(
      Guid? eventId = null,
      Instant? occurredAt = null,
      Dictionary<string, object>? metadata = null
-) : DomainEvent(aggregateId, eventId, occurredAt, metadata)
+) : DomainEvent(aggregateId, eventId, occurredAt, metadata), ITenant
 {
     public Guid IdClient { get; private set; } = idClient;
     public Guid IdProduct { get; private set; } = idProduct;

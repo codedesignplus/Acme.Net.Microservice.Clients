@@ -1,12 +1,12 @@
 namespace Acme.Net.Microservice.Clients.Application.Subscription.Commands.InactivateClient;
 
-public class InactiveClientCommandHandler(IMediator mediator, ISubscriptionRepository repository, IUserContext user) : IRequestHandler<InactivatedClientCommand>
+public class InactiveClientCommandHandler(IMediator mediator, ISubscriptionRepository repository) : IRequestHandler<InactivateClientCommand>
 {
-    public async Task Handle(InactivatedClientCommand request, CancellationToken cancellationToken)
+    public async Task Handle(InactivateClientCommand request, CancellationToken cancellationToken)
     {
         ApplicationGuard.IsNull(request, Errors.InvalidRequest);
 
-        var exist = await repository.ExistsAsync<SubscriptionAggregate>(request.Id, user.Tenant, cancellationToken);
+        var exist = await repository.ExistsAsync<SubscriptionAggregate>(request.Id, request.Tenant, cancellationToken);
 
         ApplicationGuard.IsTrue(exist, Errors.SuscriptionAlreadyIsCanceled);
 
