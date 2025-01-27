@@ -137,8 +137,7 @@ Write-Host "6. Writing secrets..." -ForegroundColor Blue
 vault kv put -mount=store-acme-keyvalue ms-clients `
     Security:ClientId=a74cb192-598c-4757-95ae-b315793bbbca `
     Security:ValidAudiences:0=a74cb192-598c-4757-95ae-b315793bbbca `
-    Security:ValidAudiences:1=api://a74cb192-598c-4757-95ae-b315793bbbca `
-    Redis:Instances:Core:ConnectionString=localhost:6379
+    Security:ValidAudiences:1=api://a74cb192-598c-4757-95ae-b315793bbbca
 
 vault kv get -mount=store-acme-keyvalue ms-clients
 
@@ -154,7 +153,7 @@ vault write store-acme-database/config/db-ms-clients `
 
 vault write store-acme-database/roles/ms-clients-mongo-role `
     db_name=db-ms-clients `
-    creation_statements='{ """db""": """admin""", """roles""": [{ """role""": """readWrite""", """db""": """db-ms-clients""" }] }' `
+    creation_statements="{ """db""": """admin""", """roles""": [{ """role""": """readWrite""", """db""": """db-ms-clients""" }] }" `
     default_ttl="1h" `
     max_ttl="24h"
 
@@ -173,6 +172,6 @@ vault write store-acme-rabbitmq/config/connection `
     password="password"
 
 vault write store-acme-rabbitmq/roles/ms-clients-rabbitmq-role `
-    vhosts='{"""/""":{"""write""": """.*""", """read""": """.*""", """configure""": """.*"""}}'
+    vhosts="{"""/""":{"""write""": """.*""", """read""": """.*""", """configure""": """.*"""}}"
 
 vault read store-acme-rabbitmq/creds/ms-clients-rabbitmq-role
